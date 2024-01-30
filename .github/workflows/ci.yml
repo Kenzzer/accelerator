@@ -1,10 +1,11 @@
-name: Accelerator CI
+name: CI
 on:
   workflow_dispatch:
   pull_request:
     branches:
       - master
       - overhaul
+  
   push:
     branches:
       - master
@@ -21,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'ubuntu-20.04', 'windows-2019', 'ubuntu-latest', 'windows-latest' ]
+        os: [ 'ubuntu-20.04', 'ubuntu-latest', 'windows-2019', 'windows-latest' ]
         include:
           - os: ubuntu-20.04
             cc: clang-8
@@ -39,7 +40,7 @@ jobs:
             cxx: msvc
             upload: true
             upload-artifact-name: accelerator_windows
-
+    
     uses: ./.github/workflows/build-extension.yml
     with:
       os: ${{ matrix.os }}

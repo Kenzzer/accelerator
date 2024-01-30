@@ -31,7 +31,7 @@ on:
 
 jobs:
   build:
-    name: Accelerator Extension Build ${{ inputs.os }}-${{ inputs.cc }}
+    name: Accelerator Extension ${{ inputs.os }}-${{ inputs.cc }}
     runs-on: ${{ inputs.os }}
 
     env:
@@ -96,7 +96,7 @@ jobs:
 
       - name: Upload package
         if: ${{ inputs.upload }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.upload-artifact-name }}
           path: build/package
