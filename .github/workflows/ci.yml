@@ -11,9 +11,12 @@ on:
       - overhaul
 
 jobs:
-
+  cache:
+    uses: ./.github/workflows/cache.yml
+  
   build:
     name: Build
+    needs: cache
 
     strategy:
       fail-fast: false
@@ -43,3 +46,6 @@ jobs:
       cc: ${{ matrix.cc }}
       cxx: ${{ matrix.cxx }}
       upload: ${{ matrix.upload }}
+      upload-artifact-name: ${{ matrix.upload-artifact-name }}
+      cache-key: ${{ needs.cache.outputs.key }}
+      cache-dir: ${{ needs.cache.outputs.dir }}
