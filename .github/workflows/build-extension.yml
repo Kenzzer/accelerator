@@ -78,7 +78,6 @@ jobs:
       - name: Install AMBuild
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          pip install git
           pip install ./${{ inputs.cache-dir }}/ambuild
 
       - name: Build (Debug)
