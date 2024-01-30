@@ -71,6 +71,8 @@ bootstrapPkgs
 git config --global --add safe.directory /
 git config --global --add safe.directory "*"
 
+git submodule update --init --recursive -f
+
 rm -rfv ./build
 rm -rfv ./${amTempLocation}
 
