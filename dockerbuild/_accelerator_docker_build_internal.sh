@@ -33,6 +33,7 @@ bootstrapAM()
 {
     # need to install ambuild if we already cloned, otherwise checkout-deps will do it 4 us
     if test -f "${succCloneLocation}"; then
+        pip install /accelerator/"${amTempLocation}"/ambuild
         return 255;
     fi
 
@@ -74,13 +75,12 @@ git config --global --add safe.directory "*"
 git submodule update --init --recursive -f
 
 rm -rfv ./build
-rm -rfv ./${amTempLocation}
 
-cd third_party/breakpad
+pushd third_party/breakpad
 	git reset --hard
 	git clean -x -f -d
 	git clean -X -f -d
-cd ../../
+popd
 
 bootstrapAM || true
 
