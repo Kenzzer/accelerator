@@ -7,9 +7,8 @@ dockerimage="debian:11-slim"
 # we do this so that we can be agnostic about where we're invoked from
 # meaning you can exec this script anywhere and it should work the same
 thisiswhereiam=${BASH_SOURCE[0]}
-# this should be /whatever/directory/structure/Open-Fortress-Source
+# this should be /whatever/directory/structure/[accelerator_root]
 script_folder=$( cd -- "$( dirname -- "${thisiswhereiam}" )" &> /dev/null && pwd )
-
 
 # this should be /whatever/directory/structure/[accelerator_root]/cicd
 build_dir="dockerbuild"
